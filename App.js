@@ -8,16 +8,16 @@ const App = () => {
                 <Text>Hello, world!</Text>
             </View>
             <View style={[ styles.container, styles.cyan]}>
-                <Text>Cyan: #2aa198</Text>
+                <Text style={styles.boxText}>Cyan: #2aa198</Text>
             </View>
             <View style={[ styles.container, styles.blue ]}>
-                <Text>Blue: #268bd2</Text>
+                <Text style={styles.boxText}>Blue: #268bd2</Text>
             </View>
             <View style={[ styles.container, styles.magenta ]}>
-                <Text>Magenta: #d33682</Text>
+                <Text style={styles.boxText}>Magenta: #d33682</Text>
             </View>
             <View style={[ styles.container, styles.orange ]}>
-                <Text>Orange: #cb4b16</Text>
+                <Text style={styles.boxText}>Orange: #cb4b16</Text>
             </View>
         </SafeAreaView>
     );
