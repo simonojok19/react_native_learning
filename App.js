@@ -17,7 +17,7 @@ const App = () => {
             <View style={[ styles.container, styles.magenta ]}>
                 <Text style={styles.boxText}>Magenta: #d33682</Text>
             </View>
-            <ColorBox/>
+            <ColorBox colorName="Cyan" colorHex='#2aa198'/>
         </SafeAreaView>
     );
 }
