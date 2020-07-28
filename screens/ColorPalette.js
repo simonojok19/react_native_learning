@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {FlatList, SafeAreaView, Text,} from "react-native";
+import {FlatList, SafeAreaView, Text, StyleSheet } from "react-native";
 import ColorBox from "../components/ColorBox";
 
 const ColorPalette = ({ route }) => {
@@ -14,10 +14,17 @@ const ColorPalette = ({ route }) => {
                         colorName={item.colorName}
                         colorHex={item.hexCode}/>
                 }
-                ListHeaderComponent={<Text>{ route.params.colorName }</Text>}
+                ListHeaderComponent={<Text style={styles.text}>{ route.params.colorName }</Text>}
             />
         </SafeAreaView>
     )
 }
+
+const styles = StyleSheet.create({
+    text: {
+        marginHorizontal: 5,
+        fontSize: 20
+    }
+})
 
 export default ColorPalette;

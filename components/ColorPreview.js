@@ -12,7 +12,7 @@ const ColorPreview = ({ navigation, colors, name}) => {
                 }
             )
         } }>
-            <Text>Solarized Color</Text>
+            <Text style={styles.text}>{ name }</Text>
             <FlatList
                 horizontal={true}
                 data={colors}
@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
         height: 50,
         marginVertical: 5,
         marginHorizontal: 5,
+    },
+    text: {
+        marginHorizontal: 5,
+        fontSize: 20
     }
 })
 
