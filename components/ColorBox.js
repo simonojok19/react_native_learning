@@ -4,10 +4,16 @@ import {View, Text, StyleSheet} from 'react-native';
 const ColorBox = ({ colorName, colorHex }) => {
     const boxColor = {
         backgroundColor: colorHex
+    };
+
+    const textColor = {
+        color: parseInt(colorHex.replace('#', ''), 16) > 0xffffff / 1.1
+            ? 'white'
+            : 'black'
     }
     return (
         <View style={[ styles.container, boxColor]}>
-            <Text style={styles.boxText}>{colorName}: {colorHex}</Text>
+            <Text style={[styles.boxText, textColor]}>{colorName}: {colorHex}</Text>
         </View>
     )
 }
@@ -21,7 +27,6 @@ const styles = StyleSheet.create({
         marginVertical: 5
     },
     boxText: {
-        color: 'white',
         fontWeight: 'bold'
     }
 });
