@@ -8,8 +8,8 @@ const ColorBox = ({ colorName, colorHex }) => {
 
     const textColor = {
         color: parseInt(colorHex.replace('#', ''), 16) > 0xffffff / 1.1
-            ? 'white'
-            : 'black'
+            ? 'black'
+            : 'white'
     }
     return (
         <View style={[ styles.container, boxColor]}>
