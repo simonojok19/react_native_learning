@@ -52,6 +52,60 @@ const Home = ({ navigation }) => {
                             </View>)
                         }} />
             </TouchableOpacity>
+
+        {/*    another data */}
+
+            <TouchableOpacity onPress={ () => {
+                navigation.navigate(
+                    'ColorPalette', options = {
+                        colors: FRONTEND_MASTERS,
+                        colorName: "Solarized"
+                    }
+                )
+            } }>
+                <Text>Frontend Master</Text>
+                <FlatList
+                    horizontal={true}
+                    data={FRONTEND_MASTERS}
+                    keyExtractor={(item) => item.colorName}
+                    renderItem={
+                        ({ item }) => {
+                            const boxColor = {
+                                backgroundColor: item.hexCode
+                            }
+                            return (<View
+                                key={item.colorName}
+                                style={[styles.colorBox, boxColor]}>
+                            </View>)
+                        }} />
+            </TouchableOpacity>
+
+        {/*    the last is also here */}
+
+            <TouchableOpacity onPress={ () => {
+                navigation.navigate(
+                    'ColorPalette', options = {
+                        colors: RAINBOW,
+                        colorName: "Solarized"
+                    }
+                )
+            } }>
+                <Text>Rainbow</Text>
+                <FlatList
+                    horizontal={true}
+                    data={RAINBOW}
+                    keyExtractor={(item) => item.colorName}
+                    renderItem={
+                        ({ item }) => {
+                            const boxColor = {
+                                backgroundColor: item.hexCode
+                            }
+                            return (<View
+                                key={item.colorName}
+                                style={[styles.colorBox, boxColor]}>
+                            </View>)
+                        }} />
+            </TouchableOpacity>
         </View>
     );
 }
