@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import ColorPreview from "../components/ColorPreview";
 
 const RAINBOW = [
     { colorName: 'Red', hexCode: '#FF0000' },
@@ -38,20 +39,14 @@ const Home = ({ navigation }) => {
                 data={COLOR_ARRAY}
                 keyExtractor={(item) => item.name }
                 renderItem={({ item }) => (
-
+                    <ColorPreview
+                        key={item.name}
+                        navigation={navigation}
+                        colors={item.colors}
+                        name={item.name} />
                 )} />
 
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-        colorBox: {
-            width: 50,
-            height: 50,
-            marginVertical: 5,
-            marginHorizontal: 5,
-        }
-    })
-
 export default Home;

@@ -1,5 +1,5 @@
 import React from 'react'
-import {FlatList, Text, TouchableOpacity, View} from "react-native";
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
 
 const ColorPreview = ({ navigation, colors, name}) => {
@@ -30,3 +30,15 @@ const ColorPreview = ({ navigation, colors, name}) => {
         </TouchableOpacity>
     )
 }
+
+const styles = StyleSheet.create({
+    colorBox: {
+        width: 50,
+        height: 50,
+        marginVertical: 5,
+        marginHorizontal: 5,
+    }
+})
+
+
+export default ColorPreview;
