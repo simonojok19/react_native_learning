@@ -28,7 +28,14 @@ const COLORS = [
 const Home = ({ navigation }) => {
     return (
         <View>
-            <TouchableOpacity onPress={() => { navigation.navigate('ColorPalette')}}>
+            <TouchableOpacity onPress={ () => {
+                    navigation.navigate(
+                        'ColorPalette', options = {
+                            colors: COLORS,
+                            colorName: "Solarized"
+                        }
+                        )
+            } }>
                 <Text>Solarized Color</Text>
                 <FlatList
                     horizontal={true}
