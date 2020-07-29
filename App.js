@@ -11,8 +11,8 @@ const MainStack = createStackNavigator();
 const MainStackScreen = () => {
     return (
         <RootStack.Navigator>
-            <RootStack.Screen name="Home" component={Home} />
-            <RootStack.Screen
+            <MainStack.Screen name="Home" component={Home} />
+            <MainStack.Screen
                 name="ColorPalette"
                 component={ColorPalette}
                 options={({ route }) => ({ title: route.params.colorName })}/>
