@@ -153,7 +153,7 @@ const COLORS = [
     { colorName: 'YellowGreen', hexCode: '#9ACD' },
 ];
 
-const ColorPaletteModal = ({ addColorPalette }) => {
+const ColorPaletteModal = ({ navigation }) => {
     const [paletteName, setPaletteName] = useState('');
 
     const [colors, setColors] = useState([])
@@ -181,10 +181,10 @@ const ColorPaletteModal = ({ addColorPalette }) => {
 
     const handlePress = () => {
         if ((paletteName.length !== 0) && (colors.length !== 0 )) {
-            addColorPalette({
-                paletteName: paletteName,
-                color: colors
-            })
+            navigation.navigate('Home', options= { colorPalette: {
+                    paletteName: paletteName,
+                    colors: colors
+                }})
         } else {
             console.log('condition false')
         }

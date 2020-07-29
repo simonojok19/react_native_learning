@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import { View, Text, TouchableOpacity, FlatList, RefreshControl} from 'react-native';
 import ColorPreview from "../components/ColorPreview";
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, route }) => {
     const [colorPalettes, setColorPalettes ] = useState([]);
     const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -20,11 +20,23 @@ const Home = ({ navigation }) => {
 
     const handleRefresh = useCallback(async () => {
         setIsRefreshing(true);
-        await fetchColorPalettes();
         setTimeout(() => {
             setIsRefreshing(false);
         }, 1000)
     }, [])
+
+    useEffect(() => {
+        if (route) {
+            if (route.params) {
+                const p = route.params.colorPalette;
+                console.log(p);
+                setColorPalettes((p) => [
+                    p,
+                    ...colorPalettes,
+                ])
+            }
+        }
+    }, [route.params.colorPalette])
     return (
         <View>
             <FlatList
@@ -38,13 +50,14 @@ const Home = ({ navigation }) => {
                 onRefresh={handleRefresh}
                 data={colorPalettes}
                 keyExtractor={(item) => item.paletteName }
-                renderItem={({ item }) => (
-                    <ColorPreview
+                renderItem={({ item }) => {
+                    console.log(colorPalettes);
+                    return (<ColorPreview
                         key={item.paletteName}
                         navigation={navigation}
                         colors={item.colors}
-                        name={item.paletteName} />
-                )} />
+                        name={item.paletteName}/>)
+                }} />
 
         </View>
     );
