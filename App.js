@@ -10,25 +10,24 @@ const MainStack = createStackNavigator();
 
 const MainStackScreen = () => {
     return (
-        <MainStack.Navigator>
-            <MainStack.Screen name="Home" component={Home} />
-            <MainStack.Screen
+        <RootStack.Navigator>
+            <RootStack.Screen name="Home" component={Home} />
+            <RootStack.Screen
                 name="ColorPalette"
                 component={ColorPalette}
-                options={({ route }) => ({ title: route.params.colorName })} />
-        </MainStack.Navigator>
+                options={({ route }) => ({ title: route.params.colorName })}/>
+        </RootStack.Navigator>
     );
 }
 
 const App = () => {
     return (
         <NavigationContainer>
-            <RootStack.Navigator>
-                <RootStack.Screen name="Home" component={Home} />
+            <RootStack.Navigator mode="modal">
                 <RootStack.Screen
-                    name="ColorPalette"
-                    component={ColorPalette}
-                    options={({ route }) => ({ title: route.params.colorName })}/>
+                    name="Main"
+                    component={MainStackScreen}
+                    options={{ headerShown: false }} />
             </RootStack.Navigator>
         </NavigationContainer>
     );
