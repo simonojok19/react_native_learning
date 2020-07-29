@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, FlatList, TextInput, Button, StyleSheet } from 'react-native';
 import ColorCard from "../components/ColorCard";
 
 
@@ -153,12 +153,78 @@ const COLORS = [
     { colorName: 'YellowGreen', hexCode: '#9ACD' },
 ];
 
-const ColorPaletteModal = () => {
+const ColorPaletteModal = ({ addColorPalette }) => {
+    const [paletteName, setPaletteName] = useState('');
+
+    const [colors, setColors] = useState([])
+    const addColor = (color) => {
+        const colorz = [
+            ...colors,
+            color
+        ]
+        setColors(colorz);
+    }
+
+    const removeColor = (color) => {
+        const colorz = colors.map(value => {
+            if ( value.colorName !== color.colorName) {
+                return value;
+            }
+        });
+        setColors(colorz);
+    }
+
+    const onChangeText = (name) => {
+        console.log(name)
+        setPaletteName(name);
+    }
+
+    const handlePress = () => {
+        if ((paletteName.length !== 0) && (colors.length !== 0 )) {
+            addColorPalette({
+                paletteName: paletteName,
+                color: colors
+            })
+        } else {
+            console.log('condition false')
+        }
+    }
     return (
         <View>
-            <ColorCard />
+            <View style={[ styles.textInputContainer ]}>
+                <TextInput
+                    style={[ styles.textInput ]}
+                    value={paletteName}
+                    onChangeText={text => onChangeText(text)}/>
+                <Button
+                    title="Add"
+                    style={{ paddingHorizontal: 5 }}
+                    onPress={handlePress}
+                >
+                </Button>
+            </View>
+            <FlatList
+                data={COLORS}
+                keyExtractor={(item) => ( item.colorName )}
+                renderItem={({ item }) => <ColorCard key={item.colorName}
+                    color={item} addColor={addColor} removeColor={removeColor}/>
+                    }
+            />
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    textInput: {
+        borderColor: 'red',
+        borderWidth: 1,
+        flex: 3
+    },
+    textInputContainer: {
+        marginVertical: 2,
+        justifyContent: 'space-between',
+        flexDirection: 'row'
+    }
+})
 
 export default ColorPaletteModal;

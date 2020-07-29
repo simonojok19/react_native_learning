@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { Switch, View, Text, StyleSheet } from "react-native";
 
 const ColorCard = ({ color, addColor, removeColor }) => {
-    const [colors, setColors] = useState({})
     const [isEnabled, setIsEnabled] =useState(false);
 
     const changeValue = (value) => {
