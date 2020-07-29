@@ -28,6 +28,12 @@ const Home = ({ navigation }) => {
     return (
         <View>
             <FlatList
+                ListHeaderComponent={
+                    <TouchableOpacity
+                        onPress={() => { navigation.navigate('ColorModal')}}>
+                        <Text>Launch Modal</Text>
+                    </TouchableOpacity>
+                }
                 refreshing={isRefreshing}
                 onRefresh={handleRefresh}
                 data={colorPalettes}
