@@ -17,11 +17,19 @@ const Home = ({ navigation }) => {
     useEffect(() => {
         fetchColorPalettes();
     }, [])
+
+    const handleRefresh = useCallback(async () => {
+        setIsRefreshing(true);
+        await fetchColorPalettes();
+        setTimeout(() => {
+            setIsRefreshing(false);
+        }, 1000)
+    }, [])
     return (
         <View>
             <FlatList
-                refreshing={true}
-                onRefresh={() => { }}
+                refreshing={isRefreshing}
+                onRefresh={handleRefresh}
                 data={colorPalettes}
                 keyExtractor={(item) => item.paletteName }
                 renderItem={({ item }) => (
